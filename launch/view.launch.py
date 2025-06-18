@@ -1,8 +1,6 @@
 import os
 import xacro
 
-from ament_index_python import get_package_share_directory
-
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, OpaqueFunction
 from launch.conditions import IfCondition, UnlessCondition
@@ -10,15 +8,16 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
+
 def launch_setup(context, *args, **kwargs):
-    
+
     gui = LaunchConfiguration("gui")
 
     # Load the robot description
     pkg_share_description = FindPackageShare(package="zimmer_gripper_description").find(
         "zimmer_gripper_description"
     )
-    
+
     doc = xacro.parse(open(os.path.join(pkg_share_description, "urdf/zimmer_gripper.urdf.xacro")))
     xacro.process_doc(doc)
     robot_description = {"robot_description": doc.toxml()}
@@ -73,6 +72,7 @@ def launch_setup(context, *args, **kwargs):
 
     return nodes_to_start
 
+
 def generate_launch_description():
 
     # Declare the launch arguments
@@ -83,6 +83,6 @@ def generate_launch_description():
             default_value="True",
             description="Flag to enable joint_state_publisher_gui",
         )
-    )    
+    )
 
     return LaunchDescription(declared_arguments + [OpaqueFunction(function=launch_setup)])

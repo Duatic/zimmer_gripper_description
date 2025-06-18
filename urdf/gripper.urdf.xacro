@@ -37,7 +37,7 @@
     </link>
 
     <link name="zimmer_gripper_left_finger">
-     
+
       <inertial>
         <origin rpy="0 0 0" xyz="0 0.01 0.02" />
         <mass value="0.09"/>
@@ -69,7 +69,7 @@
         <inertia ixx="0.000006" ixy="0.000005" ixz="0.000000"
                  iyy="0.000025" iyz="0.000000"
                  izz="0.000026" />
-      </inertial>            
+      </inertial>
       <visual>
         <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
         <geometry>

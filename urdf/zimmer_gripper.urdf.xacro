@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding='utf-8'?>
 <robot name="zimmer_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro" >
-  
+
   <xacro:property name="J_PI" value="3.14159265359" />
 
-  <xacro:include filename="$(find zimmer_gripper_description)/urdf/match.urdf.xacro"/>  
-  <xacro:include filename="$(find zimmer_gripper_description)/urdf/gripper.urdf.xacro"/>  
+  <xacro:include filename="$(find zimmer_gripper_description)/urdf/match.urdf.xacro"/>
+  <xacro:include filename="$(find zimmer_gripper_description)/urdf/gripper.urdf.xacro"/>
 
   <link name="world" />
   <joint name="world_joint" type="fixed">
