@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>zimmer_gripper_description</name>
+  <version>1.0.0</version>
+  <description>URDF description for the Zimmmer Gripper</description>
+
+  <license file="LICENSE">BSD-3-Clause</license>
+
+  <author email="skaehlers@duatic.com">Sven Kähler</author>
+  <author email="tschwarzer@duatic.com">Timo Schwarzer</author>
+
+  <maintainer email="skaehler@duatic.com">Timo Schwarzer</maintainer>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
