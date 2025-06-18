@@ -87,7 +87,7 @@
       </collision>
     </link>
 
-    <joint name="zimmer_finger_left" type="prismatic">
+    <!-- <joint name="zimmer_finger_left" type="prismatic">
       <parent link="zimmer_gripper_body" />
       <child link="zimmer_gripper_left_finger" />
       <origin rpy="0 0 0" xyz="0 0 0" />
@@ -105,6 +105,18 @@
       <limit effort="2000" lower="0" upper="0.016" velocity="0.2" />
       <dynamics damping="0.1" friction="0.0" />
       <implicitSpringDamper>True</implicitSpringDamper>
+    </joint> -->
+
+    <joint name="zimmer_finger_left" type="fixed">
+      <parent link="zimmer_gripper_body" />
+      <child link="zimmer_gripper_left_finger" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </joint>
+
+    <joint name="zimmer_finger_right" type="fixed">
+      <parent link="zimmer_gripper_body" />
+      <child link="zimmer_gripper_right_finger" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
     </joint>
 
     <xacro:mimic_joint_plugin_gazebo name_prefix="zimmer_finger_right"
