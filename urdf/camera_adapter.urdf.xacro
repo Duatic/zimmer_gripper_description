@@ -9,7 +9,7 @@
       <joint name="camera_adapter_joint" type="fixed">
         <parent link="${parent}" />
         <child link="camera_adapter_link" />
-        <origin xyz="0 0 0.005" rpy="0 0 ${J_PI}" />
+        <origin xyz="0 0 0.005" rpy="0 0 ${J_PI/2}" />
       </joint>
     </xacro:if>
 
