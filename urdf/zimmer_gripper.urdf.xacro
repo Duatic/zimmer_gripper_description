@@ -3,18 +3,25 @@
 
   <xacro:property name="J_PI" value="3.14159265359" />
 
+  <xacro:include filename="$(find zimmer_gripper_description)/urdf/camera_adapter.urdf.xacro"/>
   <xacro:include filename="$(find zimmer_gripper_description)/urdf/match.urdf.xacro"/>
   <xacro:include filename="$(find zimmer_gripper_description)/urdf/gripper.urdf.xacro"/>
+  <xacro:include filename="$(find intel_realsense_d435i_description)/urdf/d435i.urdf.xacro"/>
 
   <link name="world" />
   <joint name="world_joint" type="fixed">
     <origin xyz="0 0 0" rpy="-${J_PI/2} 0 0"/>
     <parent link="world" />
-    <child link="zimmer_match_link" />
+    <child link="camera_adapter_link" />
   </joint>
 
-  <xacro:zimmer_match parent=''/>
+  <xacro:camera_adapter parent='' />
+  <xacro:zimmer_match parent='camera_adapter_attach_link'/>
   <xacro:zimmer_gripper parent='zimmer_match_link' />
+
+    <xacro:sensor_d435 name="camera" topics_ns="camera" parent="camera_adapter_mount_link" publish_pointcloud="true">
+    <origin xyz="0 -0.0125 0.01" rpy="${J_PI/2} -${J_PI/2} ${J_PI}" />
+  </xacro:sensor_d435>  
 
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">

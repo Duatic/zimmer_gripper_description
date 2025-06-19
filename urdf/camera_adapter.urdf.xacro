@@ -54,6 +54,22 @@
       <origin xyz="0 0 0.005" rpy="0 0 0"  />
     </joint>
 
+    <link name="${prefix}camera_adapter_mount_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.00" />
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0"
+          iyy="0.0" iyz="0.0"
+          izz="0.0" />
+      </inertial>
+    </link>
+
+    <joint name="${prefix}camera_adapter_mount_joint" type="fixed">
+      <parent link="${prefix}camera_adapter_attach_link" />
+      <child link="${prefix}camera_adapter_mount_link" />
+      <origin xyz="0 0.08 0" rpy="0 0 0" />
+    </joint>
+
 
 
   </xacro:macro>
