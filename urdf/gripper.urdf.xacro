@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding='utf-8'?>
 <robot name="zimmer_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="zimmer_gripper" params="parent:='' ">
+  <xacro:macro name="zimmer_gripper" params="parent:='' prefix:=''">
 
     <xacro:include
       filename="$(find zimmer_gripper_description)/urdf/zimmer_gripper.transmission.xacro" />
     <xacro:include filename="$(find zimmer_gripper_description)/urdf/zimmer_gripper.gazebo.xacro" />
 
-    <joint name="gripper_joint" type="fixed">
+    <joint name="${prefix}gripper_joint" type="fixed">
       <parent link="${parent}" />
-      <child link="zimmer_gripper_body" />
+      <child link="${prefix}zimmer_gripper_body" />
       <origin xyz="0 -0.039 0" rpy="0 1.5708 0" />
     </joint>
 
-    <link name="zimmer_gripper_body">
+    <link name="${prefix}zimmer_gripper_body">
       <inertial>
         <origin xyz="0 -0.039 0" rpy="0 1.5708 0" />
         <mass value="0.576" />
@@ -36,7 +36,7 @@
       </collision>
     </link>
 
-    <link name="zimmer_gripper_left_finger">
+    <link name="${prefix}zimmer_gripper_left_finger">
 
       <inertial>
         <origin rpy="0 0 0" xyz="0 0.01 0.02" />
@@ -62,7 +62,7 @@
       </collision>
     </link>
 
-    <link name="zimmer_gripper_right_finger">
+    <link name="${prefix}zimmer_gripper_right_finger">
       <inertial>
         <origin rpy="0 0 0" xyz="0 0.01 0.02" />
         <mass value="0.09"/>
@@ -107,32 +107,32 @@
       <implicitSpringDamper>True</implicitSpringDamper>
     </joint> -->
 
-    <joint name="zimmer_finger_left" type="fixed">
-      <parent link="zimmer_gripper_body" />
-      <child link="zimmer_gripper_left_finger" />
+    <joint name="${prefix}zimmer_finger_left" type="fixed">
+      <parent link="${prefix}zimmer_gripper_body" />
+      <child link="${prefix}zimmer_gripper_left_finger" />
       <origin rpy="0 0 0" xyz="0 0 0" />
     </joint>
 
-    <joint name="zimmer_finger_right" type="fixed">
-      <parent link="zimmer_gripper_body" />
-      <child link="zimmer_gripper_right_finger" />
+    <joint name="${prefix}zimmer_finger_right" type="fixed">
+      <parent link="${prefix}zimmer_gripper_body" />
+      <child link="${prefix}zimmer_gripper_right_finger" />
       <origin rpy="0 0 0" xyz="0 0 0" />
     </joint>
 
-    <xacro:mimic_joint_plugin_gazebo name_prefix="zimmer_finger_right"
-      parent_joint="zimmer_finger_left"
-      mimic_joint="zimmer_finger_right"
+    <xacro:mimic_joint_plugin_gazebo name_prefix="${prefix}zimmer_finger_right"
+      parent_joint="${prefix}zimmer_finger_left"
+      mimic_joint="${prefix}zimmer_finger_right"
       has_pid="false"
       multiplier="1.0"
       max_effort="2000" />
 
-    <joint name="connection_joint" type="fixed">
+    <joint name="§(prefix)connection_joint" type="fixed">
       <origin xyz="0 -0.128 0" rpy="0 0 0" />
-      <parent link="zimmer_gripper_body" />
-      <child link="zimmer_gripper_tcp" />
+      <parent link="${prefix}zimmer_gripper_body" />
+      <child link="${prefix}zimmer_gripper_tcp" />
     </joint>
 
-    <link name="zimmer_gripper_tcp" />
+    <link name="${prefix}zimmer_gripper_tcp" />
 
   </xacro:macro>
 </robot>

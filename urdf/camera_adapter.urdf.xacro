@@ -3,17 +3,17 @@
 
     <xacro:property name="J_PI" value="3.14159265359" />
 
-  <xacro:macro name="camera_adapter" params="parent:='' ">
+  <xacro:macro name="camera_adapter" params="parent:='' prefix:=''">
 
     <xacro:if value="${parent != ''}">
-      <joint name="camera_adapter_joint" type="fixed">
+      <joint name="${prefix}camera_adapter_joint" type="fixed">
         <parent link="${parent}" />
-        <child link="camera_adapter_link" />
+        <child link="${prefix}camera_adapter_link" />
         <origin xyz="0 0 0.005" rpy="0 0 ${J_PI/2}" />
       </joint>
     </xacro:if>
 
-    <link name="camera_adapter_link">
+    <link name="${prefix}camera_adapter_link">
       <inertial>
         <origin xyz="0 0 0.005" rpy="-${J_PI/2} 0 ${J_PI}" />
         <mass value="0.00" />
@@ -38,7 +38,7 @@
       </collision>
     </link>
 
-    <link name="camera_adapter_attach_link">
+    <link name="${prefix}camera_adapter_attach_link">
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <mass value="0.00" />
@@ -48,9 +48,9 @@
       </inertial>
     </link>
 
-    <joint name="camera_adapter_attach_joint" type="fixed">
-      <parent link="camera_adapter_link" />
-      <child link="camera_adapter_attach_link" />
+    <joint name="${prefix}camera_adapter_attach_joint" type="fixed">
+      <parent link="${prefix}camera_adapter_link" />
+      <child link="${prefix}camera_adapter_attach_link" />
       <origin xyz="0 0 0.005" rpy="0 0 0"  />
     </joint>
 
