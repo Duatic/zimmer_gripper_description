@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="camera_adapter" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="J_PI" value="3.14159265359" />
+
+  <xacro:macro name="camera_adapter" params="parent:='' ">
+
+    <xacro:if value="${parent != ''}">
+      <joint name="camera_adapter_joint" type="fixed">
+        <parent link="${parent}" />
+        <child link="camera_adapter_link" />
+        <origin xyz="0 0 0.005" rpy="0 0 ${J_PI}" />
+      </joint>
+    </xacro:if>
+
+    <link name="camera_adapter_link">
+      <inertial>
+        <origin xyz="0 0 0.005" rpy="-${J_PI/2} 0 ${J_PI}" />
+        <mass value="0.00" />
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0"
+          iyy="0.0" iyz="0.0"
+          izz="0.0" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0.005" rpy="-${J_PI/2} 0 ${J_PI}" />
+        <geometry>
+          <mesh filename="file://$(find zimmer_gripper_description)/meshes/camera_adapter_realsense_d435i.stl" scale="0.01 0.01 0.01" />
+        </geometry>
+        <material name="">
+          <color rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+        <collision>
+        <origin xyz="0 0 0.005" rpy="-${J_PI/2} 0 ${J_PI}" />
+        <geometry>
+          <mesh filename="file://$(find zimmer_gripper_description)/meshes/camera_adapter_realsense_d435i.stl" scale="0.01 0.01 0.01" />
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="camera_adapter_attach_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.00" />
+        <inertia ixx="0.0" ixy="0.0" ixz="0.0"
+          iyy="0.0" iyz="0.0"
+          izz="0.0" />
+      </inertial>
+    </link>
+
+    <joint name="camera_adapter_attach_joint" type="fixed">
+      <parent link="camera_adapter_link" />
+      <child link="camera_adapter_attach_link" />
+      <origin xyz="0 0 0.005" rpy="0 0 0"  />
+    </joint>
+
+
+
+  </xacro:macro>
+</robot>
