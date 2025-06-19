@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="zimmer_match" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="zimmer_match" params="parent:='' ">
+  <xacro:macro name="zimmer_match" params="parent:='' prefix:=''">
 
     <xacro:if value="${parent != ''}">
-      <joint name="match_joint" type="fixed">
+      <joint name="${prefix}zimmer_match_joint" type="fixed">
         <parent link="${parent}" />
-        <child link="zimmer_match_link" />
+        <child link="${prefix}zimmer_match_link" />
         <origin xyz="0 0 0" rpy="-${pi/2} 0  ${pi/2}" />
       </joint>
     </xacro:if>
 
-    <link name="zimmer_match_link">
+    <link name="${prefix}zimmer_match_link">
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <mass value="0.32" />
