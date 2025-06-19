@@ -6,7 +6,7 @@
   <xacro:include filename="$(find zimmer_gripper_description)/urdf/camera_adapter.urdf.xacro"/>
   <xacro:include filename="$(find zimmer_gripper_description)/urdf/match.urdf.xacro"/>
   <xacro:include filename="$(find zimmer_gripper_description)/urdf/gripper.urdf.xacro"/>
-  <xacro:include filename="$(find intel_realsense_d435i_description)/urdf/d435i.urdf.xacro"/>
+  <xacro:include filename="$(find camera_description)/urdf/d435i.urdf.xacro"/>
 
   <link name="world" />
   <joint name="world_joint" type="fixed">
