@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot name="camera_adapter" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="J_PI" value="3.14159265359" />
+  <xacro:property name="J_PI" value="3.14159265359" />
 
   <xacro:macro name="camera_adapter" params="parent:='' prefix:=''">
 
@@ -16,10 +16,10 @@
     <link name="${prefix}camera_adapter_link">
       <inertial>
         <origin xyz="0 0 0.005" rpy="-${J_PI/2} 0 ${J_PI}" />
-        <mass value="0.00" />
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0"
-          iyy="0.0" iyz="0.0"
-          izz="0.0" />
+        <mass value="0.1" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+          iyy="0.0001" iyz="0.0"
+          izz="0.0001" />
       </inertial>
       <visual>
         <origin xyz="0 0 0.005" rpy="-${J_PI/2} 0 ${J_PI}" />
@@ -41,10 +41,10 @@
     <link name="${prefix}camera_adapter_attach_link">
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.00" />
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0"
-          iyy="0.0" iyz="0.0"
-          izz="0.0" />
+        <mass value="0.01" />
+        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
+          iyy="0.000001" iyz="0.0"
+          izz="0.000001" />
       </inertial>
     </link>
 
@@ -57,10 +57,10 @@
     <link name="${prefix}camera_adapter_mount_link">
       <inertial>
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <mass value="0.00" />
-        <inertia ixx="0.0" ixy="0.0" ixz="0.0"
-          iyy="0.0" iyz="0.0"
-          izz="0.0" />
+        <mass value="0.01" />
+        <inertia ixx="0.000001" ixy="0.0" ixz="0.0"
+          iyy="0.000001" iyz="0.0"
+          izz="0.000001" />
       </inertial>
     </link>
 
@@ -69,8 +69,6 @@
       <child link="${prefix}camera_adapter_mount_link" />
       <origin xyz="0 0.08 0" rpy="0 0 0" />
     </joint>
-
-
 
   </xacro:macro>
 </robot>
