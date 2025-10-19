@@ -91,18 +91,18 @@
       <parent link="${prefix}zimmer_gripper_body" />
       <child link="${prefix}zimmer_gripper_left_finger" />
       <origin rpy="0 0 0" xyz="0 0 0" />
-      <axis xyz="0 0 -1" />
-      <limit effort="2000" lower="0.0" upper="0.016" velocity="0.2" />
+      <axis xyz="0 0 1" />
+      <limit effort="2000" lower="-0.016" upper="0.0" velocity="0.2" />
     </joint>
-    <xacro:insert_transmission name="zimmer_finger_left" />
+      <xacro:insert_transmission name="zimmer_finger_left" />
 
     <joint name="${prefix}zimmer_finger_right" type="prismatic">
       <parent link="${prefix}zimmer_gripper_body" />
       <child link="${prefix}zimmer_gripper_right_finger" />
       <origin rpy="0 0 0" xyz="0 0 0" />
-      <axis xyz="0 0 1" />
+      <axis xyz="0 0 -1" />
       <mimic joint="${prefix}zimmer_finger_left" multiplier="1" />
-      <limit effort="2000" lower="0" upper="0.016" velocity="0.2" />
+      <limit effort="2000" lower="-0.016" upper="0.0" velocity="0.2" />
       <dynamics damping="0.1" friction="0.0" />
       <implicitSpringDamper>True</implicitSpringDamper>
     </joint>
