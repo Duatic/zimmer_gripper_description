@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding='utf-8'?>
 <robot name="zimmer_gripper" xmlns:xacro="http://www.ros.org/wiki/xacro" >
-  
+
   <xacro:include filename="$(find zimmer_gripper_description)/urdf/match.urdf.xacro"/>
-  <xacro:include filename="$(find zimmer_gripper_description)/urdf/gripper.urdf.xacro"/>  
+  <xacro:include filename="$(find zimmer_gripper_description)/urdf/gripper.urdf.xacro"/>
 
   <xacro:macro name="zimmer_gripper_macro" params="parent">
 
@@ -14,7 +14,6 @@
         <robotNamespace>/</robotNamespace>
       </plugin>
     </gazebo>
-  </xacro:macro>  
+  </xacro:macro>
 
 </robot>
-
